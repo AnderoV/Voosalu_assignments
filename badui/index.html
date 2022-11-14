@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Worst UI experience</title>
+    <script>
+      let randomizeNumber = () => {
+        let number = "";
+        while (number.length < 8) {
+          if (number.length === 0) {
+            number += 5;
+          } else if (number.length < 8) {
+            number += Math.floor(Math.random() * 10);
+          }
+        }
+        return number;
+      };
+
+      let firstRandomLetter = (goToNext) => {
+        let name = document.getElementById("fname").value;
+        let characters = "abcdefghijklmnopqrstuvwxyzüõöä";
+        let letter = "";
+        if (goToNext) {
+          for (let i = 0; i < 1; i++) {
+            letter = characters.charAt(
+              Math.floor(Math.random() * characters.length)
+            );
+            name += letter;
+          }
+        } else {
+          for (let i = 0; i < 1; i++) {
+            letter = characters.charAt(
+              Math.floor(Math.random() * characters.length)
+            );
+            name = name.slice(0, -1) + letter;
+          }
+        }
+        return name;
+      };
+      let lastRandomLetter = (goToNext) => {
+        let name = document.getElementById("lname").value;
+        let characters = "abcdefghijklmnopqrstuvwxyzüõöä";
+        let letter = "";
+        if (goToNext) {
+          for (let i = 0; i < 1; i++) {
+            letter = characters.charAt(
+              Math.floor(Math.random() * characters.length)
+            );
+            name += letter;
+          }
+        } else {
+          for (let i = 0; i < 1; i++) {
+            letter = characters.charAt(
+              Math.floor(Math.random() * characters.length)
+            );
+            name = name.slice(0, -1) + letter;
+          }
+        }
+        return name;
+      };
+
+      let answer = () => {
+        let fname = document.getElementById("fname").value;
+        let lname = document.getElementById("lname").value;
+        let number = document.getElementById("number").value;
+        return `${fname} ${lname} ${number}`;
+      };
+    </script>
+  </head>
+  <body>
+    <label>First name:</label><br />
+    <input
+      type="text"
+      id="fname"
+      placeholder="enter first name"
+      disabled="disabled"
+    />
+    <input
+      type="submit"
+      value="Add letter"
+      onclick="document.getElementById('fname').value = firstRandomLetter()"
+    />
+    <input
+      type="submit"
+      value="Next letter"
+      onclick="document.getElementById('fname').value = firstRandomLetter(true)"
+    />
+    <input
+      type="submit"
+      value="Reset"
+      onclick="document.getElementById('fname').value = ''"
+    />
+    <br />
+    <label>Last name:</label><br />
+    <input
+      type="text"
+      id="lname"
+      placeholder="enter last name"
+      disabled="disabled"
+    />
+    <input
+      type="submit"
+      value="Add letter"
+      onclick="document.getElementById('lname').value = lastRandomLetter()"
+    />
+    <input
+      type="submit"
+      value="Next letter"
+      onclick="document.getElementById('lname').value = lastRandomLetter(true)"
+    />
+    <input
+      type="submit"
+      value="Reset"
+      onclick="document.getElementById('lname').value = ''"
+    />
+    <br />
+    <label>Phone number:</label><br />
+    <input
+      type="text"
+      id="number"
+      placeholder="enter phone number"
+      disabled="disabled"
+    />
+    <input
+      type="submit"
+      value="Get number"
+      onclick="document.getElementById('number').value = randomizeNumber()"
+    />
+    <br />
+    <input
+      type="submit"
+      value="Submit"
+      onclick="document.getElementById('answer').innerHTML = answer()"
+    />
+    <h1 id="answer"></h1>
+  </body>
+</html>
